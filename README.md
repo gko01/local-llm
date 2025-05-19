@@ -19,6 +19,8 @@ This conversational interface democratizes network management, making it accessi
 2. Requirement on Setup: VyOS Software Router Configuration
 To embark on this journey, you'll need a router capable of exporting network flow data (NetFlow) and supporting SNMP (Simple Network Management Protocol). While some consumer routers offer limited versions of these features, a more robust solution is often required for detailed monitoring.
 
+![Markdown Logo](https://github.com/gko01/local-llm/edit/main/minipc.jpg) "Markdown Logo")
+
 You've made an excellent choice with VyOS, an open-source network operating system that can be installed on a mini PC. This provides granular control and the necessary features for our project.
 
 Here's how you can configure NetFlow and SNMP on VyOS:

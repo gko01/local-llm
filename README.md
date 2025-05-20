@@ -17,18 +17,18 @@ Longitudinal data collection facilitates capacity planning - a 6-month dataset f
 
 ## Step 1. Architecture and traffic flow analysis of the system
 
-![architecture](/posts/images/local%20llm.gif)
+![architecture](/images/local%20llm.gif)
 
 ## Step 2. Network Infrastructure Configuration Using VyOS
 Since most of the home or SMB router can't give Netflow and SNMP features which usually required for Business and Enterprise, so I have to change to use virtual router with more feature. So, I use vyos which I have lots of experience with it, and I like CLI very much. The VyOS router serves as the data collection foundation, providing both flow export and SNMP telemetry:
 
 (a fanless minipc with multiple GE ports)
 
-![minipc](/posts/images/minipc.png "fanless minipc")
+![minipc](/images/minipc.png "fanless minipc")
 
 (running vyos as VM inside the minipc with ESXi)
 
-![esxi](/posts/images/esxi.jpg "esxi host")
+![esxi](/images/esxi.jpg "esxi host")
 
 NetFlow/IPFIX Configuration
 
@@ -132,13 +132,13 @@ You'll need to create a Telegraf configuration file (telegraf.conf) to specify t
         oid = ".1.3.6.1.2.1.2.2.1.16.3"     #use snmpwalk to verify the correct OID
 
 ### Nice Monitoring Dashboard
-![Grafana](/posts/images/grafana.jpg "grafana")
+![Grafana](/images/grafana.jpg "grafana")
 
 One tricky thing is that SNMP output of router interface in/out packet counts is always accumulating is because SNMP interface counters such as ifInOctets and ifOutOctets are cumulative counters. They represent the total number of packets or bytes that have passed through the interface since the router or interface was last reset. These counters continuously increase over time and only reset when the device or interface restarts or the counter rolls over due to its maximum value limit.
 
 Here is the script to pot correct figures:
 
-![influx script](/posts/images/influx.jpg)
+![influx script](/images/influx.jpg)
 
 ## Step 5. Create Python Script to Normalize Data from InfluxDB to Vector DB in Qdrant for AI Chatbot
 Next, we need to prepare the data for our LLM. This involves querying InfluxDB, normalizing the relevant information, and storing it in a vector database, Qdrant, for efficient semantic search.
@@ -278,11 +278,11 @@ You have to fine tune the parameter and try many many times until you get the be
 
 You can check GPU status while you execute the code.
 
-![pc gpu status](/posts/images/pc%20gpu.jpg "pc gpu status")
+![pc gpu status](/images/pc%20gpu.jpg "pc gpu status")
 
 Still need to fine tune, may need more data and information for AI to be more accurate.
 
-![AI chat](/posts/images/ai%20chat.jpg "AI chat")
+![AI chat](/images/ai%20chat.jpg "AI chat")
 
 # Implementation Challenges and Lessons Learned and reflection
 
